@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Casino Local Audit",
+  "version": "1.0.0",
+  "description": "Audita tu propio juego local: registra trafico HTTP y WebSocket y avisa si el servidor filtra el resultado antes de que decidas.",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost/*",
+        "http://127.0.0.1/*",
+        "https://localhost/*",
+        "https://127.0.0.1/*"
+      ],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "http://localhost/*",
+        "http://127.0.0.1/*",
+        "https://localhost/*",
+        "https://127.0.0.1/*"
+      ],
+      "js": ["content.js"],
+      "css": ["panel.css"],
+      "run_at": "document_start",
+      "world": "ISOLATED"
+    }
+  ]
+}
